@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('customer', CustomerController::class);
+Route::post('/import', 'CustomerController@import')->name("customer-import");
+Route::post('/export', 'CustomerController@export')->name("customer-export");
+Route::post('/signin', 'AuthController@signin')->name("user.signin");
+Route::post('/signup', 'AuthController@signup')->name("user.signup");
+
